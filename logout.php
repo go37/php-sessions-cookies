@@ -6,8 +6,8 @@ $_SESSION = array();
 
 session_destroy();
 
-unset($_SESSION);
+session_unset();
 
 header('Location: login.php');
 
-?>
+exit();

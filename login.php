@@ -1,13 +1,12 @@
 <?php
-session_start();
-
-if (!empty($_POST['loginname'])) {
-    $_SESSION['loginname'] = $_POST['loginname'];
-    header('Location: index.php');
-    exit();
-} else {
 
 require 'inc/head.php';
+
+if (!empty($_POST['loginname'])) {
+    $_SESSION['loginname'] = trim($_POST['loginname']);
+    header('Location: index.php');
+    exit();
+}
 
 ?>
 <div class="container" style="margin-top:40px">
@@ -50,7 +49,8 @@ require 'inc/head.php';
         </div>
     </div>
 </div>
-<?php 
-}
+<?php
+
 require 'inc/foot.php';
+
 ?>

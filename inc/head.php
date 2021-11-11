@@ -1,15 +1,14 @@
 <?php
 
-if(empty($_SESSION['loginname'])) 
-{
-    header('Location: login.php');
-    exit();
+session_start();
+
+if (empty($_SESSION['loginname'])) {
+    $loginname = "Wilder";
 } else {
     $loginname = $_SESSION['loginname'];
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,9 +45,9 @@ if(empty($_SESSION['loginname']))
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Chocolates chips</a></li>
-                        <li><a href="#">Nuts</a></li>
-                        <li><a href="#">Gluten full</a></li>
+                        <li><a href="index.php">Chocolates chips</a></li>
+                        <li><a href="index.php">Nuts</a></li>
+                        <li><a href="index.php">Gluten full</a></li>
                         <li>
                             <a href="/cart.php" class="btn btn-warning navbar-btn">
                                 <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>

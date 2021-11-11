@@ -1,16 +1,25 @@
-<?php 
+<?php
 
-session_start();
-
-if(empty($_SESSION['loginname'])) 
-{
-    header('Location: login.php');
-    exit();
-}
-
+require 'inc/head.php';
 require 'inc/data/products.php';
 
-require 'inc/head.php'; ?>
+if (!isset($_SESSION['product'])) {
+    $_SESSION['product'] = [];
+}
+
+if (isset($_GET['add_to_cart'])) {
+    $cookieId = $_GET['add_to_cart'];
+
+    if (!isset($_SESSION['product'][$cookieId])) {
+        $_SESSION['product'][$cookieId] = 1;
+    } else {
+        $cookieCount = $_SESSION['product'][$cookieId];
+        $cookieCount += 1;
+        $_SESSION['product'][$cookieId] = $cookieCount;
+    }
+}
+
+?>
 <section class="cookies container-fluid">
     <div class="row">
         <?php foreach ($catalog as $id => $cookie) { ?>
@@ -29,4 +38,8 @@ require 'inc/head.php'; ?>
         <?php } ?>
     </div>
 </section>
-<?php require 'inc/foot.php'; ?>
+<?php
+
+require 'inc/foot.php';
+
+?>
